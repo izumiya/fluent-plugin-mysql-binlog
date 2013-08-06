@@ -1,6 +1,7 @@
-# Fluent::Plugin::Mysql::Binlog
+fluent-plugin-mysql-binlog
+===========================
 
-TODO: Write a gem description
+MySQL Binlog input plugin for Fluentd event collector.
 
 ## Installation
 
@@ -16,9 +17,25 @@ Or install it yourself as:
 
     $ gem install fluent-plugin-mysql-binlog
 
-## Usage
+## Configuration
 
-TODO: Write usage instructions here
+### Config Sample
+`````
+<source>
+  type            mysql_binlog
+  host            localhost           # Optional (default: localhost)
+  port            3306                # Optional (default: 3306)
+  username        msandbox            # Optional (default: root)
+  password        msadnbox            # Optional (default nopassword)
+  tag             input.mysql         # Required
+  position_file   position.log        # Optional (default: position.log)
+  retry_wait      3                   # Optional (default: 3)
+  retry_limit     100                 # Optional (default: 100)
+  log_level       debug               # Optional (default: info)
+  listen_event    row_event           # Optional (default: Fluent::MysqlBinlogInput::BinlogUtil::EVENT_TYPES.join(','))
+</source>
+`````
+
 
 ## Contributing
 
