@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-mysql-binlog"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["IZUMIYA Hiroyuki"]
   spec.email         = ["izumiya@gmail.com"]
   spec.description   = %q{MySQL Binlog input plugin for Fluentd event collector.}
