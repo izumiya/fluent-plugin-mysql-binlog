@@ -1,4 +1,4 @@
-fluent-plugin-mysql-binlog
+fluent-plugin-mysql-binlog, a plugin for [Fluentd](http://fluentd.org)
 ===========================
 
 MySQL Binlog input plugin for Fluentd event collector.
