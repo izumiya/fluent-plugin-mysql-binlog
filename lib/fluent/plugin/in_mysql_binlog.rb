@@ -83,15 +83,15 @@ module Fluent
       class << self
         def to_hash(event)
           event_hash = {}
+          event_hash["errors"] = {}
           attributes_for(event).map do |attr|
             begin
               event_hash[attr] = event.send(attr.to_sym)
-              event_hash[attr + '_is_error'] = false
             rescue => e
               require 'json'
-              event_hash[attr] = e.inspect + "\n" + e.backtrace.join("\n")
-              event_hash[attr + '_is_error'] = true
-              $log.error event_hash.to_json
+              event_hash[attr] = ""
+              event_hash["errors"][attr] = e.inspect + "\n" + e.backtrace.join("\n")              
+              $log.error "Error occured in the following mysql event:\n" + event_hash.to_json
             end
           end
           event_hash
