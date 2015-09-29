@@ -12,7 +12,7 @@ module Fluent
     config_param :host, :string, :default => 'localhost'
     config_param :port, :integer, :default => 3306
     config_param :username, :string, :default => 'root'
-    config_param :password, :string, :default => nil
+    config_param :password, :string, :default => nil,:secret => true
     config_param :position_file, :string, :default => 'position.log'
     config_param :retry_wait, :integer, :default => 3
     config_param :retry_limit, :integer, :default => 100
