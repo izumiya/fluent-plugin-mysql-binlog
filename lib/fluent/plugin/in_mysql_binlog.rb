@@ -3,6 +3,11 @@ module Fluent
   class MysqlBinlogInput < Input
     Plugin.register_input('mysql_binlog', self)
 
+    # Define `router` method of v0.12 to support v0.10.57 or earlier
+    unless method_defined?(:router)
+      define_method("router") { Engine }
+    end
+
     def initialize
       super
       require 'kodama'
@@ -49,7 +54,7 @@ module Fluent
     end
 
     def event_listener(event)
-      Engine.emit(@tag, Engine.now, BinlogUtil.to_hash(event))
+      router.emit(@tag, Engine.now, BinlogUtil.to_hash(event))
     end
 
     def mysql_url
