@@ -49,7 +49,7 @@ module Fluent
     end
 
     def event_listener(event)
-      Engine.emit(@tag, Engine.now, BinlogUtil.to_hash(event))
+      router.emit(@tag, Engine.now, BinlogUtil.to_hash(event))
     end
 
     def mysql_url
